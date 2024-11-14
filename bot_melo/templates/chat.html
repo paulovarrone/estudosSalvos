@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <h1><img src="{{ url_for('static', filename='img/melo.png') }}" alt="vassourinha"> Bot-Melo</h1>
+
+        <form id="enviar" action="/resposta" method="post">
+            <label for="pergunta">Faça sua pergunta:</label>
+            <input type="text" id="pergunta" name="pergunta" required>
+            <button type="submit">Enviar</button>
+        </form>
+
+
+        {% if resposta %}
+        <div class="resposta">
+                
+            <div id="per">
+                <p><strong>Sua Pergunta:</strong></p>
+                <br>
+                <p id="per-chat"> {{ pergunta }} </p>
+            </div>
+
+            <div id="resp">
+                <p><strong>Resposta:</strong></p>
+                <br>
+                <div class="contact-info">
+                    {{ resposta | safe }}
+                </div>
+            </div>
+            
+        </div>
+        {% endif %}
+
+    </div>
+
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <h1><img src="{{ url_for('static', filename='img/melo.png') }}" alt="vassourinha"> Bot-Melo</h1>
+
+        <form id="enviar">
+            <label for="pergunta">Faça sua pergunta:</label>
+            <input type="text" id="pergunta" name="pergunta" required>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="resposta-container">
+            <!-- aqui vai aparecer a resposta do AJAX -->
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#enviar').on('submit', function(event) {
+                event.preventDefault(); 
+
+                $.ajax({
+                    data: {
+                        pergunta: $('#pergunta').val()
+                    },
+                    type: 'POST',
+                    url: '/resposta',
+                    success: function(response) {
+                        $('#resposta-container').html(`
+                            <div class="resposta">
+                                <div id="per">
+                                    <p><strong>Sua Pergunta:</strong></p>
+                                    <br>
+                                    <p id="per-chat">${response.pergunta}</p>
+                                </div>
+                                <div id="resp">
+                                    <p><strong>Resposta:</strong></p>
+                                    <br>
+                                    <div class="contact-info">
+                                        ${response.resposta}
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    },
+                    error: function() {
+                        alert('Erro ao enviar a pergunta. Tente novamente.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

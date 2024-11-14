@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+h1 {
+    display: flex;
+    align-items: flex-end;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#enviar {
+    margin: 50px;
+}
+
+#per,#resp{
+    margin: 20px;
+}
+
+.contact-info, #per-chat {
+    word-wrap: break-word; /* Quebra de linha para evitar overflow */
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    line-height: 1.6;
+    text-align: justify;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.resposta {
+    width: 600px;
+    margin: 20px auto; /* Centraliza a div horizontalmente */
+    padding: 10px;
+    background-color: #c4ddd5;
+    border-radius: 8px;
+}
+
+
+/* Estilizando o formulário */
+#enviar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o label */
+#enviar label {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Estilo para o campo de input */
+#enviar input{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Mudança no input ao focar */
+#enviar input:focus {
+    border-color: #329e7c;
+    outline: none;
+}
+
+/* Estilo para o botão */
+#enviar button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #66a893;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Mudança de cor no botão ao passar o mouse */
+#enviar button:hover {
+    background-color: #64b69d;
+}
+
+
+/* .contact-info {
+    display: flex;
+    align-items: center;
+    font-size: 16px; 
+} */
+
+.contact-info a {
+    margin: 0 10px; 
+}
+
+.wpp {
+    width: 32px; 
+    height: 32px; 
+}
